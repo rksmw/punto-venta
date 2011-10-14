@@ -8,6 +8,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/x
 	<class>puntoventa.modelo.Departamento</class>
 	<class>puntoventa.modelo.Producto</class>
 	<class>puntoventa.modelo.Marca</class>
+	<class>puntoventa.modelo.Usuario</class>
+	<class>puntoventa.modelo.ProductoAlmacen</class>
+	<class>puntoventa.modelo.ProductoVendido</class>
+	<class>puntoventa.modelo.Venta</class>
 	
 	<properties>
 			<property name="hibernate.archive.autodetection" value="class"/>
