@@ -20,7 +20,7 @@
 		<tr>
 			<td>Puesto</td>
 			<td>
-				<select name="puesto">
+				<select name="puesto" >
 					<option value="cajero">Cajero</option>
 					<option value="administrador">Administrador</option>
 				</select>
