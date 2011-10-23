@@ -47,6 +47,9 @@ public class Login extends HttpServlet {
 		RequestDispatcher requestDispatcher=null;
 		
 		usuario=usuarioDAO.existeUsuario(usuarioRequest, passwordRequest, puestoRequest);
+		
+		
+		
 		if(usuario!=null){
 			HttpSession session=request.getSession();
 			session.setAttribute("usuario", usuario);

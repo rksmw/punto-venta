@@ -29,4 +29,14 @@
     <servlet-name>caja</servlet-name>
     <url-pattern>/caja</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UnServlet</display-name>
+    <servlet-name>UnServlet</servlet-name>
+    <servlet-class>puntoventa.servlets.UnServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UnServlet</servlet-name>
+    <url-pattern>/UnServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
