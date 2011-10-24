@@ -20,7 +20,7 @@
 <center>
 	<h1>Terminal del usuario ${usuario.nombre}</h1>
 </center>
-<div class="center_venta_busqueda">
+<div class="center_venta_busqueda ui-widget ui-corner-all">
 	<form method="post" action="">
 	<table>
 		<tr>
@@ -31,7 +31,7 @@
 	</table>
 	</form>
 </div>
-<div class="center_venta_lista_productos">
+<div class="center_venta_lista_productos ui-tabs ui-widget ui-widget-content ui-corner-all">
 <form>
 <table>
 	<tr>
