@@ -1,4 +1,9 @@
-function abrir_punto_venta(){		
+function abrir_punto_venta(){	
+	$("#contenido").html("<img src='resources/images/cargando.gif'/>");
+	
+}
+function abrir_punto_venta1(){	
+	$("#contenido").html("<img src='resources/images/cargando.gif'/>");
 	$.ajax({
 		type : "POST",
 		url : "menuCajero.do?abrir_punto_venta",
