@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrador</title>
-<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
+
 <link type="text/css" href="resources/css/menu.css" rel="stylesheet"/>
 
 
@@ -46,8 +46,8 @@ $(document).ready(function(){
 </head>
 <body>
     <ul class="topnav">  
-        <li><a href="#" onclick="">Agregar producto</a></li>  
-        <li><a href="#" onclick="">Crear departamento</a></li>
+        <li><a href="#" >Agregar producto</a></li>  
+        <li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>
