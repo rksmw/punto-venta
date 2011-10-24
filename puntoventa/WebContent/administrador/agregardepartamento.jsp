@@ -8,11 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
 
 	<form>

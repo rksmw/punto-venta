@@ -59,7 +59,8 @@ $(document).ready(function(){
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>
-<br/>
-	<div id="contenedor-principal" style="position: absolute;" ></div>
+<center>
+	<div id="contenedor-principal" style="position: absolute; top: 150px" ></div>
+</center>
 </body>
 </html>
