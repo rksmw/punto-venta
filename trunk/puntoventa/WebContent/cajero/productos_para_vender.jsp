@@ -5,18 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de Venta</title>
+<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
+
+
+<link type="text/css" href="resources/jquery/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
+
+<script type="text/javascript" src="resources/jquery/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
 </head>
 <body>
-<form method="post" action="">
-<table>
-	<tr>
-		<td>Clave del producto</td>
-		<td><input type="text" name="claveproducto" value=""></td>
-		<td><input type="submit" value="Agregar"></td>
-	</tr>
-</table>
-</form>
-
+<h1>Terminal del usuario ${usuario.nombre}</h1>
+<div class="center_venta_busqueda">
+	<form method="post" action="">
+	<table>
+		<tr>
+			<td>Clave del producto</td>
+			<td><input type="text" name="claveproducto" value="" tabindex="1" ></td>
+			<td><input type="submit" value="Agregar" class="ui-state-active ui-corner-all"></td>
+		</tr>
+	</table>
+	</form>
+</div>
+<div class="center_venta_lista_productos">
 <form>
 <table>
 	<tr>
@@ -41,12 +54,12 @@
 	</tr>
 	<tr></tr>
 	<tr>
-		<td><input type="button" value="Quitar producto"></td>
+		<td><input type="button" value="Quitar producto" class="ui-state-active ui-corner-all"></td>
 		<td></td>
-		<td><input type="button" value="Cobrar"></td>
+		<td><input type="button" value="Cobrar" class="ui-state-active ui-corner-all"></td>
 	</tr>
 </table>
 </form>
-
+</div>
 </body>
 </html>
