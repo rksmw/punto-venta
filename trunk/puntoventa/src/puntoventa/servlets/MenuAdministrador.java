@@ -46,6 +46,7 @@ public class MenuAdministrador extends HttpServlet {
 	}
 	protected void doAgregarDepartamento(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 		String nombreDepartamento=request.getParameter("nombredepartamento");
+		
 		String mensajeError="";
 		if(nombreDepartamento!=null  )
 		if(!nombreDepartamento.isEmpty()){

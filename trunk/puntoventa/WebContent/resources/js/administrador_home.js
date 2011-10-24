@@ -15,13 +15,13 @@ function abrir_crear_departamento(){
 
 function guardar_departamento(){	
 	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
-	alert($('form').serialize());
+	alert("datos \n"+$('form').serialize());
 	$.ajax({
 		type : "POST",
 		url : "menuAdministrador?guardar_departamento",
 		data: $('form').serialize(),
 		success : function(data) {
-			abrir_crear_departamento();
+			$("#contenedor-principal").html(data);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(XMLHttpRequest.status + " ERROR!");
