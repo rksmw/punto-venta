@@ -25,7 +25,7 @@ $(function(){
 });
 </script>				
 </head>
-<body>
+<body class="resto">
 <div id="header">
 	Inicio de sesión del sistema
 	
@@ -33,7 +33,7 @@ $(function(){
 
 <br>
 <div class="left">
-	<img alt="" src="resources/images/ts.gif"/>
+	<img width="220px" height="200px" src="resources/images/ts.gif"/>
 </div>	
 <div id="tabs" class="center">
 	<ul>
