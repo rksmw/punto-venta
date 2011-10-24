@@ -10,6 +10,21 @@ function abrir_crear_departamento(){
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(XMLHttpRequest.status + " ERROR!");
 		}
-	});	
-	
+	});		
+}
+
+function guardar_departamento(){	
+	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
+	alert($('form').serialize());
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?guardar_departamento",
+		data: $('form').serialize(),
+		success : function(data) {
+			abrir_crear_departamento();
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});		
 }
