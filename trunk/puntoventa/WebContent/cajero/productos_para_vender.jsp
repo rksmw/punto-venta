@@ -8,7 +8,7 @@
 <link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
 
 
-<link type="text/css" href="resources/jquery/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
+<link type="text/css" href="resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
 
 <script type="text/javascript" src="resources/jquery/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="resources/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
