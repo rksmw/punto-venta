@@ -19,7 +19,7 @@
 		<table>
 			<tr>
 				<td>Ingresar nombre del nuevo departamento</td>
-				<td><input type="text" name="nombredepartamento" value="" tabindex="0"/></td>
+				<td><input type="text" id="nombredepartamento" name="nombredepartamento" value="" tabindex="1"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -30,20 +30,27 @@
 			</tr>
 		</table>
 	</form>
+</div>
 	
 	<br/>
-	<c:if test="${error==null}">
+	<c:if test="${error!=null}">
 		<br/>
-		${error}
+		<div class="ui-widget">
+			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+				<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<strong>Cuidado:</strong> ${error}</p>
+			</div>
+		</div>
+		
+		
 		<br/>
 	</c:if>
 	
+	<div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
 	<c:if test="${departamentos!=null}">
 	<center>Departamentos registrados</center>
 		<table>
-			<tr>
-				<th>Nombre de departamento</th>		
-			</tr>
+
 			<c:forEach items="${departamentos}" var="departamento">
 				<tr>
 					<td>${departamento.nombreDepartamento}</td>
@@ -52,8 +59,8 @@
 			
 		</table>
 	</c:if>
+</div>	
 	
-	
-</div>
+
 </body>
 </html>
