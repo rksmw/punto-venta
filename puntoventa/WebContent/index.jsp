@@ -5,8 +5,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de Venta</title>
+
+<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
+
+
+<link type="text/css" href="resources/jquery/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
+
+<script type="text/javascript" src="resources/jquery/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	// Tabs
+	$('#tabs').tabs();
+});
+</script>				
 </head>
 <body>
+<h1>Inicio de sesión del sistema</h1>
+
+<div id="tabs" class="center">
+	<ul>
+		<li><a href="#formlogin">Login</a>
+	</ul>
+
+</div>
+
+<div id="formlogin" class="center">
 <form method="post" action="login">
 	<table>
 		<tr>
@@ -27,9 +56,14 @@
 			</td>		
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Ingresar"></td>
+			<td colspan="2">
+				<center>
+					<input type="submit" value="Ingresar" class="ui-state-active ui-corner-all"/>
+				</center>
+			</td>
 		</tr>
 	</table>
 </form>
+</div>
 </body>
 </html>
