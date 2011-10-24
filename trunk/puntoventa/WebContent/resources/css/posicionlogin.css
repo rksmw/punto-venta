@@ -14,11 +14,15 @@
 #header{
 	font-size: 1cm;
 	text-align: center;
+	color: blue;
 	
 }
 .left{
 	position: absolute;
-	left: 130px;
-	
+	left: 130px;	
 	top: 40px;
+}
+
+.resto{
+	background-color: black;
 }
