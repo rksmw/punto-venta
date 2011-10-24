@@ -15,7 +15,7 @@
 <br/>
 <div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
 
-	<form >
+	<form>
 		<table>
 			<tr>
 				<td>Ingresar nombre del nuevo departamento</td>
