@@ -48,12 +48,13 @@ public class MenuAdministrador extends HttpServlet {
 		String nombreDepartamento=request.getParameter("nombredepartamento");
 		
 		String mensajeError="";
+		DepartamentoDAO departamentoDAO=new DepartamentoDAO();
 		if(nombreDepartamento!=null  )
 		if(!nombreDepartamento.isEmpty()){
 			Departamento departamento=new Departamento();
-			DepartamentoDAO departamentoDAO=new DepartamentoDAO();
+			
 			Departamento busqueda=departamentoDAO.buscarDepartamentoPorNombre(nombreDepartamento);
-			if(busqueda!=null){
+			if(busqueda==null){
 				departamento.setNombreDepartamento(nombreDepartamento);
 				departamentoDAO.persist(departamento);
 			}else{
@@ -66,6 +67,9 @@ public class MenuAdministrador extends HttpServlet {
 		if(!mensajeError.isEmpty()){
 			request.setAttribute("error", mensajeError);
 		}
+		ArrayList<Departamento> departamentos=(ArrayList<Departamento>)departamentoDAO.findAll();
+		request.setAttribute("departamentos", departamentos);
+		
 		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/agregardepartamento.jsp");
 		requestDispatcher.forward(request, response);
 	}

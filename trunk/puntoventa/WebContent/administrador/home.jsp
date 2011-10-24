@@ -46,8 +46,15 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-    <ul class="topnav">  
-        <li><a href="#" >Agregar producto</a></li>  
+    <ul class="topnav">                   
+        <li>  
+        <a href="#">Agregar producto</a>  
+        <ul class="subnav">  
+            <li><a href="#">Actualizar existencias</a></li>  
+            <li><a href="#">Nuevo producto</a></li>  
+        </ul>  
+    </li>  
+         
         <li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
         <li><a href="#">cerrar sesión</a></li>
     </ul>  

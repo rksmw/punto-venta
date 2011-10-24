@@ -13,9 +13,7 @@ function abrir_crear_departamento(){
 	});		
 }
 
-function guardar_departamento(){	
-	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
-	alert("datos \n"+$('form').serialize());
+function guardar_departamento(){		
 	$.ajax({
 		type : "POST",
 		url : "menuAdministrador?guardar_departamento",
