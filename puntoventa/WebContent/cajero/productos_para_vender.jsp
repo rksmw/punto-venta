@@ -20,7 +20,7 @@
 <center>
 	<h1>Terminal del usuario ${usuario.nombre}</h1>
 </center>
-<div class="center_venta_busqueda ui-widget ui-corner-all">
+<div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
 	<form method="post" action="">
 	<table>
 		<tr>

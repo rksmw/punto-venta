@@ -7,7 +7,7 @@
 <title>Punto de Venta</title>
 
 <link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
-
+<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
 
 <link type="text/css" href="resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
 
@@ -26,9 +26,18 @@ $(function(){
 </script>				
 </head>
 <body>
-<center>
-	<h1>Inicio de sesión del sistema</h1>
-</center>
+<div id="topPanel">
+    <ul>    
+    <li class="active">Autenticación</li>
+    </ul>
+       <div> <h2 class="headerOrange"></h2>
+         <div id="Layer1"></div>
+         <h2 class="headerOrange">Inicio de sesión del sistema</h2>
+       </div>
+</div>
+
+
+<br/>
 <div id="tabs" class="center">
 	<ul>
 		<li><a href="#formlogin">Login</a>
