@@ -39,4 +39,14 @@
     <servlet-name>UnServlet</servlet-name>
     <url-pattern>/UnServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuCajero.do</display-name>
+    <servlet-name>menuCajero.do</servlet-name>
+    <servlet-class>puntoventa.servlets.MenuCajero</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuCajero.do</servlet-name>
+    <url-pattern>/menuCajero.do</url-pattern>
+  </servlet-mapping>
 </web-app>

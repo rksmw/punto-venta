@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de venta</title>
 <link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
+<link type="text/css" href="resources/css/menu.css" rel="stylesheet"/>
 
 
 <link type="text/css" href="resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
@@ -15,6 +16,8 @@
 
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
+
+<script type="text/javascript" src="resources/js/cajero_home.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){  
@@ -43,11 +46,11 @@ $(document).ready(function(){
 </head>
 <body>
     <ul class="topnav">  
-        <li><a href="#">punto de venta</a></li>  
+        <li><a href="#" onclick="javascript:abrir_punto_venta();">punto de venta</a></li>  
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
-
-
+<br/>
+<br>
 <div id="contenido"></div>
 </body>
 </html>
