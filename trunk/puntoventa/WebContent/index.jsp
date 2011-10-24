@@ -36,7 +36,7 @@ $(function(){
 
 </div>
 
-<div id="formlogin" class="center">
+<div id="formlogin" class="center ui-tabs ui-widget ui-widget-content ui-corner-all">
 <form method="post" action="login">
 	<table>
 		<tr>
