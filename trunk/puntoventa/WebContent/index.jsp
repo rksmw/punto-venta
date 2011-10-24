@@ -33,7 +33,7 @@ $(function(){
 
 <br>
 <div class="left">
-	<img width="220px" height="200px" src="resources/images/ts.gif"/>
+	<img width="220px" height="200px" src="resources/images/ts2.gif"/>
 </div>	
 <div id="tabs" class="center">
 	<ul>

@@ -51,6 +51,8 @@ $(document).ready(function(){
     </ul>  
 <br/>
 <br>
-<div id="contenido"></div>
+<center>
+	<div id="contenido"></div>
+</center>
 </body>
 </html>
