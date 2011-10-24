@@ -50,7 +50,7 @@ $(document).ready(function(){
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>
-<br>
+<br/>
 	<div id="contenedor-principal"></div>
 </body>
 </html>
