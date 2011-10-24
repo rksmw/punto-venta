@@ -57,7 +57,8 @@ public class Login extends HttpServlet {
 				requestDispatcher=getServletContext().getRequestDispatcher("/cajero/home.jsp");
 				requestDispatcher.forward(request, response);
 			}else{
-				
+				requestDispatcher=getServletContext().getRequestDispatcher("/administrador/home.jsp");
+				requestDispatcher.forward(request, response);
 			}
 		}else{
 			requestDispatcher=getServletContext().getRequestDispatcher("/index.jsp");
