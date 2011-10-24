@@ -1,5 +1,5 @@
 function abrir_punto_venta(){	
-	$("#contenido").html("<img src='resources/images/cargando.gif'/>");
+	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
 	
 }
 function abrir_punto_venta1(){	
