@@ -26,18 +26,15 @@ $(function(){
 </script>				
 </head>
 <body>
-<div id="topPanel">
-    <ul>    
-    <li class="active">Autenticación</li>
-    </ul>
-       <div> <h2 class="headerOrange"></h2>
-         <div id="Layer1"></div>
-         <h2 class="headerOrange">Inicio de sesión del sistema</h2>
-       </div>
+<div id="header">
+	Inicio de sesión del sistema
+	
 </div>
 
-
-<br/>
+<br>
+<div class="left">
+	<img alt="" src="resources/images/ts.gif"/>
+</div>	
 <div id="tabs" class="center">
 	<ul>
 		<li><a href="#formlogin">Login</a>

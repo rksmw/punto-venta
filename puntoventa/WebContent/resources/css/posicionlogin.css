@@ -1,16 +1,24 @@
 .center{
 	margin:auto;
 	width:30%;
-	background-color:#b0e0e6;
 	
 }
 .center_venta_busqueda{
 		margin:auto;
 	width:70%;
-	background-color:#b0e0e6;
 }
 .center_venta_lista_productos{
 	margin:auto;
 	width:70%;
-	background-color:#C5B8FF;
+}
+#header{
+	font-size: 1cm;
+	text-align: center;
+	
+}
+.left{
+	position: absolute;
+	left: 130px;
+	
+	top: 40px;
 }
