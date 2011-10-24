@@ -17,7 +17,9 @@
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
 </head>
 <body>
-<h1>Terminal del usuario ${usuario.nombre}</h1>
+<center>
+	<h1>Terminal del usuario ${usuario.nombre}</h1>
+</center>
 <div class="center_venta_busqueda">
 	<form method="post" action="">
 	<table>

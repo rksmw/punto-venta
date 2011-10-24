@@ -26,8 +26,9 @@ $(function(){
 </script>				
 </head>
 <body>
-<h1>Inicio de sesión del sistema</h1>
-
+<center>
+	<h1>Inicio de sesión del sistema</h1>
+</center>
 <div id="tabs" class="center">
 	<ul>
 		<li><a href="#formlogin">Login</a>
