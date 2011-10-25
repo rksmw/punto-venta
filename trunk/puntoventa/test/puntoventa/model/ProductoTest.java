@@ -34,6 +34,7 @@ public class ProductoTest {
 		Departamento departamento1=new Departamento();
 		departamento1.setNombreDepartamento("Blancos");
 		Producto producto=new Producto();
+		producto.setNombre("Colchon 9x3");
 		producto.setDepartamento(departamento1);
 		producto.setCodigo("56787");
 		producto.setPrecio(34.50F);

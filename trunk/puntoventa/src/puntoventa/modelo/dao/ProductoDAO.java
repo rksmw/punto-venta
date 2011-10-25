@@ -17,5 +17,18 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 		}
 		return p;
 	}
+	
+	public Producto buscarProductoPorNombre(String nombre){
+		Producto p=null;
+		try{
+			p=(Producto)getEntityManager()
+					.createQuery("FROM Producto as p where p.nombre=:nombre")
+					.setParameter("nombre", nombre)
+					.getSingleResult();
+		}catch (Exception e) {
+
+		}
+		return p;
+	}
 
 }

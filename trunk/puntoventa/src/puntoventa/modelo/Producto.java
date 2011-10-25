@@ -3,6 +3,9 @@ package puntoventa.modelo;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import puntoventa.modelo.dao.ProductoDAO;
+import puntoventa.util.MensajesError;
+
 /**
  * Entity implementation class for Entity: Producto
  *
@@ -23,11 +26,39 @@ public class Producto implements Serializable {
 	@Column(name="precio",nullable=false)
 	private Float precio;
 	
+	@Column(name="nombre", nullable=false)
+	private String nombre;
+	
 	@OneToOne(targetEntity=Marca.class,cascade=CascadeType.ALL)
 	private Marca marca;
 	
 	@ManyToOne(targetEntity=Departamento.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Departamento departamento;
+	
+	public MensajesError validarNombreYCodigo(){
+		MensajesError mensajesError=new MensajesError();
+		ProductoDAO productoDAO=new ProductoDAO();
+		if(nombre.isEmpty()){
+			mensajesError.getMensajes().add("El nombre no debe estar vacio");
+		}else{
+			
+			if(productoDAO.buscarProductoPorNombre(nombre)!=null){
+				mensajesError.getMensajes().add("El nombre del producto ya existe");
+			}
+		}
+		
+		if(codigo.isEmpty()){
+			mensajesError.getMensajes().add("El codigo del producto no debe estar vacio");
+		}else{
+			if(productoDAO.buscarProductoPorClave(codigo)!=null){
+				mensajesError.getMensajes().add("El codigo del producto ya existe");
+			}
+		}
+		
+		if(mensajesError.getMensajes().size()>0)
+			mensajesError.setErrores(true);
+		return mensajesError;
+	}
 	
 
 	public Long getId() {
@@ -73,6 +104,14 @@ public class Producto implements Serializable {
 
 	public void setMarca(Marca marca) {
 		this.marca = marca;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
    
 }

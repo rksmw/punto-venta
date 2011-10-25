@@ -50,12 +50,13 @@ $(document).ready(function(){
         <li>  
         <a href="#">Agregar producto</a>  
         <ul class="subnav">  
-            <li><a href="#">Actualizar existencias</a></li>  
-            <li><a href="#">Nuevo producto</a></li>  
+            <li><a href="#" onclick="javascript:abrir_buscar_clave();">Actualizar existencias</a></li>  
+            <li><a href="#" onclick="javascript:abrir_nuevo_producto();">Nuevo producto</a></li>  
         </ul>  
     </li>  
          
         <li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
+        <li><a href="#" onclick="javascript:abrir_crear_marca();">Crear marca</a></li>        
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>
