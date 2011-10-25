@@ -20,7 +20,8 @@ public class ProductoAlmacen implements Serializable {
 	@Column(name="producto_almacen_id")
 	private Long id;
 	
-	@Column(name="producto",nullable=false)
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="producto")
 	private Producto producto;
 	
 	@Column(name="cantidad_producto",nullable=false)
