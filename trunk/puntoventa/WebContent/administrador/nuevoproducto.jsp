@@ -54,7 +54,7 @@
 			<tr>
 				<td colspan="2">
 					<center>
-						<input type="button" value="Guardar producto" onclick="javascript:guardar_nuevo_producto()"/>
+						<input type="button" value="Guardar producto" onclick="javascript:guardar_nuevo_producto()" class="ui-state-active ui-corner-all"/>
 					</center>
 				</td>				
 			</tr>

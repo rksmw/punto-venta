@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="Buscar" onclick="javascript:buscar_clave_producto();"/>
+					<input type="button" value="Buscar" onclick="javascript:buscar_clave_producto();" class="ui-state-active ui-corner-all"/>
 				</td>
 			</tr>
 		</table>

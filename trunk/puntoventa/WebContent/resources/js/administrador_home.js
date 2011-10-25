@@ -55,6 +55,21 @@ function buscar_clave_producto(){
 	});		
 }
 
+function actualizar_existencias(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?actualizar_existencias",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});			
+}
+
+
 function abrir_crear_marca(){	
 	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
 	$.ajax({
@@ -111,3 +126,4 @@ function guardar_nuevo_producto(){
 		}
 	});		
 }
+
