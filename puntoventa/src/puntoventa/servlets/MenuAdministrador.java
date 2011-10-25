@@ -97,6 +97,47 @@ public class MenuAdministrador extends HttpServlet {
 		requestDispatcher.forward(request, response);
 	}
 	
+	protected void doActualizarExistencias(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException{
+		String existenciasRecuperadas=request.getParameter("existenciasproducto");
+		String idProductoAlmacenRecuperado=request.getParameter("codigoproductoalmacen");
+		
+		String error="";
+		
+		ProductoAlmacen productoAlmacen=new ProductoAlmacenDAO().findById(new Long(idProductoAlmacenRecuperado));
+		
+		RequestDispatcher requestDispatcher=null;
+		
+		if(existenciasRecuperadas!=null){
+			if(!existenciasRecuperadas.isEmpty()){
+				try{
+					int existencias=Integer.parseInt(existenciasRecuperadas);
+					if(existencias<1){
+						error="Las existencias deben ser mayor a 0";
+					}else{
+						productoAlmacen.setExistencias(existencias);
+					}
+				}catch(Exception e){
+					error="El formato del numero de existencias no es correcto";
+				}
+			}else{
+				error="Debe ingresar un numero de existencias";
+			}
+		}else{
+			error="Debe ingresar un numero de existencias";
+		}
+		if(error.isEmpty()){
+			new ProductoAlmacenDAO().merge(productoAlmacen);		
+			String mensaje="Las existencias se han actualizado";
+			request.setAttribute("mensaje", mensaje);
+		}else{
+			request.setAttribute("error", error);
+		}
+		request.setAttribute("producto", productoAlmacen);
+		requestDispatcher=getServletContext().getRequestDispatcher("/administrador/ingresarexistencias.jsp");
+		requestDispatcher.forward(request, response);
+	}
+	
+	
 	protected void doBuscarProductoPorClave(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String codigoProducto=request.getParameter("claveproducto");
 		String errores="";
@@ -118,7 +159,7 @@ public class MenuAdministrador extends HttpServlet {
 			errores="Debe ingresar un código de producto";
 		}
 		if(errores.isEmpty()){
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/ingrearexistencias.jsp");			
+			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/ingresarexistencias.jsp");			
 		}else{
 			request.setAttribute("error", errores);
 			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/actualizarexistencias.jsp");
@@ -304,6 +345,9 @@ public class MenuAdministrador extends HttpServlet {
 		}
 		if(request.getQueryString().compareTo("guardar_nuevo_producto")==0){
 			doGuardarNuevoProducto(request, response);
+		}
+		if(request.getQueryString().compareTo("actualizar_existencias")==0){
+			doActualizarExistencias(request, response);
 		}
 	}
 
