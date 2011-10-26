@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de venta</title>
-<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
+
 <link type="text/css" href="resources/css/menu.css" rel="stylesheet"/>
 
 
@@ -18,6 +18,7 @@
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
 
 <script type="text/javascript" src="resources/js/cajero_home.js"></script>
+<script type="text/javascript" src="resources/js/operaciones_comunes.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){  
@@ -46,11 +47,22 @@ $(document).ready(function(){
 </head>
 <body>
     <ul class="topnav">  
-        <li><a href="#" onclick="javascript:abrir_punto_venta();">punto de venta</a></li>  
+        <li><a href="#" onclick="javascript:abrir_punto_venta();">punto de venta</a></li>
+        
+          <li>  
+        	<a href="#">Consultar productos</a>  
+        	<ul class="subnav">  
+            	<li><a href="#" onclick="javascript:consultar_todo();">Consultar todos los productos</a></li>  
+            	<li><a href="#" onclick="javascript:abrir_mostrar_producto();" >Consultar por nombre o código</a></li>  
+        	</ul>  
+    	</li>
+          
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>
 <br/>
-	<div id="contenedor-principal"></div>
+<center>
+	<div id="contenedor-principal" style="position: absolute; top: 150px"></div>
+</center>	
 </body>
 </html>

@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de Venta</title>
-<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
 
 
 <link type="text/css" href="resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
@@ -20,7 +19,7 @@
 <center>
 	<h1>Terminal del usuario ${usuario.nombre}</h1>
 </center>
-<div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
+<div class="ui-widget-header ui-widget ui-corner-all">
 	<form method="post" action="">
 	<table>
 		<tr>
