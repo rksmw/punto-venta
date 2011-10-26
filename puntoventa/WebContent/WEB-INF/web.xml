@@ -54,4 +54,14 @@
     <servlet-name>menuAdministrador</servlet-name>
     <url-pattern>/menuAdministrador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>consultas.do</display-name>
+    <servlet-name>consultas.do</servlet-name>
+    <servlet-class>puntoventa.servlets.Consultas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>consultas.do</servlet-name>
+    <url-pattern>/consultas.do</url-pattern>
+  </servlet-mapping>
 </web-app>
