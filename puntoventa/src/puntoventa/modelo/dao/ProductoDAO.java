@@ -27,7 +27,7 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 			p=(Producto)getEntityManager()
 					.createQuery("FROM Producto as p where p.nombre = :nombre")
 					.setParameter("nombre", nombre)
-					.getResultList();
+					.getSingleResult();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
