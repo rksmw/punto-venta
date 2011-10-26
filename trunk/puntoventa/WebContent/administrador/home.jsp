@@ -19,6 +19,7 @@
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
 
 <script type="text/javascript" src="resources/js/administrador_home.js"></script>
+<script type="text/javascript" src="resources/js/operaciones_comunes.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){  
@@ -41,6 +42,8 @@ $(document).ready(function(){
         }, function(){  //On Hover Out  
             $(this).removeClass("subhover"); //On hover out, remove class "subhover"  
     });  
+
+    $(".currency").currency();
   
 });  
 </script>
@@ -48,15 +51,23 @@ $(document).ready(function(){
 <body>
     <ul class="topnav">                   
         <li>  
-        <a href="#">Agregar producto</a>  
-        <ul class="subnav">  
-            <li><a href="#" onclick="javascript:abrir_buscar_clave();">Actualizar existencias</a></li>  
-            <li><a href="#" onclick="javascript:abrir_nuevo_producto();">Nuevo producto</a></li>  
-        </ul>  
-    </li>  
+        	<a href="#">Agregar producto</a>  
+        	<ul class="subnav">  
+            	<li><a href="#" onclick="javascript:abrir_buscar_clave();">Actualizar existencias</a></li>  
+            	<li><a href="#" onclick="javascript:abrir_nuevo_producto();">Nuevo producto</a></li>  
+        	</ul>  
+    	</li>  
          
         <li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
-        <li><a href="#" onclick="javascript:abrir_crear_marca();">Crear marca</a></li>        
+        <li><a href="#" onclick="javascript:abrir_crear_marca();">Crear marca</a></li>
+        
+        <li>  
+        	<a href="#">Consultar productos</a>  
+        	<ul class="subnav">  
+            	<li><a href="#" onclick="javascript:consultar_todo();">Consultar todos los productos</a></li>  
+            	<li><a href="#" onclick="javascript:abrir_mostrar_producto();" >Consultar por nombre o código</a></li>  
+        	</ul>  
+    	</li>        
         <li><a href="#">cerrar sesión</a></li>
     </ul>  
 <br/>

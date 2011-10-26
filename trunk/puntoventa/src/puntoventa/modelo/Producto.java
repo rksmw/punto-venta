@@ -26,11 +26,13 @@ public class Producto implements Serializable {
 	@Column(name="precio",nullable=false)
 	private Float precio;
 	
-	@Column(name="nombre", nullable=false)
+	@Column(name="nombre", nullable=false )
 	private String nombre;
 	
 	@OneToOne(targetEntity=Marca.class,cascade=CascadeType.ALL)
 	private Marca marca;
+	@OneToOne(mappedBy="producto")
+	private ProductoAlmacen productoAlmacen;
 	
 	@ManyToOne(targetEntity=Departamento.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private Departamento departamento;
@@ -112,6 +114,16 @@ public class Producto implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+
+	public ProductoAlmacen getProductoAlmacen() {
+		return productoAlmacen;
+	}
+
+
+	public void setProductoAlmacen(ProductoAlmacen productoAlmacen) {
+		this.productoAlmacen = productoAlmacen;
 	}
    
 }

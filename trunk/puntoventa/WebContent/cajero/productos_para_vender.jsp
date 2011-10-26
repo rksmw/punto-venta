@@ -31,7 +31,10 @@
 	</table>
 	</form>
 </div>
-<div class="center_venta_lista_productos ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+<!--  <div class="center_venta_lista_productos ui-tabs ui-widget ui-widget-content ui-corner-all">  -->
+<div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
+
 <form>
 <table>
 	<tr>
