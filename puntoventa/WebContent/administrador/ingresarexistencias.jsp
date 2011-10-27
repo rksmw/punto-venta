@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,11 +18,13 @@
 				</tr>
 				<tr>
 					<td>Nombre del producto</td>
-					<td>${producto.producto.codigo}</td>
+					<td>${producto.producto.nombre}</td>
 				</tr>
 				<tr>
 					<td>Precio del producto</td>
-					<td>${producto.producto.precio}</td>
+					<td>
+					<fmt:formatNumber value="${producto.producto.precio}" type="currency"/>
+					</td>
 				</tr>
 				<tr>
 					<td>Marca del producto</td>

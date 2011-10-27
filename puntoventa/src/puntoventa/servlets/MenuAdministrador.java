@@ -17,6 +17,7 @@ import puntoventa.modelo.ProductoAlmacen;
 import puntoventa.modelo.dao.DepartamentoDAO;
 import puntoventa.modelo.dao.MarcaDAO;
 import puntoventa.modelo.dao.ProductoAlmacenDAO;
+import puntoventa.modelo.dao.ProductoDAO;
 import puntoventa.util.MensajesError;
 
 /**
@@ -317,6 +318,116 @@ public class MenuAdministrador extends HttpServlet {
 		request.setAttribute("departamentos", departamentos);
 		requestDispatcher.forward(request, response);
 	}
+	
+	protected void doAbrirEliminarProducto(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+		requestDispatcher.forward(request, response);
+	}
+	
+	protected void doBuscarEliminarProducto(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String criterio=request.getParameter("criterio");
+		String opcion=request.getParameter("buscarpor");
+		MensajesError errores=new MensajesError();
+		ProductoDAO productoDAO=new ProductoDAO();
+		Producto producto=null;
+		ArrayList<Producto> productos=null;
+		
+		RequestDispatcher requestDispatcher=null;
+		
+		if(criterio!=null){
+			
+			if(criterio.isEmpty()){
+				errores.getMensajes().add("El campo de busqueda esta vacio");
+			}
+		}else{
+			errores.getMensajes().add("El campo de busqueda esta vacio");
+		}
+		if(opcion!=null){			
+			if(opcion.isEmpty()){
+				errores.getMensajes().add("Debe elegir una opcion");
+			}
+		}else{
+			errores.getMensajes().add("Debe elegir una opcion");
+		}
+		if(errores.getMensajes().size()>0)
+			errores.setErrores(true);
+		
+		if(!errores.isErrores()){
+			if(opcion.compareTo("codigo")==0){
+				producto=productoDAO.buscarProductoPorClave(criterio);
+				if(producto!=null){
+					request.setAttribute("producto", producto);
+					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+				}
+				else{
+					errores.getMensajes().add("El producto con el codigo "+criterio+" no se encuentra");
+					request.setAttribute("errores", errores);
+					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+				}
+			}else{//Aun no ha sido realizada esta parte
+				productos=productoDAO.buscarProductosPorNombre(criterio);
+				if(productos!=null){
+					if(!productos.isEmpty()){
+						request.setAttribute("productos", productos);
+						requestDispatcher=getServletContext().getRequestDispatcher("/administrador/listarparaeliminar.jsp");
+					}else{
+						errores.getMensajes().add("No se encontraron productos");
+						request.setAttribute("errores", errores);
+						requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+					}
+					
+				}else{
+					errores.getMensajes().add("No se encontraron productos");
+					request.setAttribute("errores", errores);
+					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+				}
+			}
+		}else{
+			request.setAttribute("errores", errores);
+			requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+		}
+		requestDispatcher.forward(request, response);
+	}
+	
+	protected void doEliminarProductoLista(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String productoId=request.getParameter("idproducto");
+		
+		RequestDispatcher requestDispatcher=null;
+		MensajesError mensajes=new MensajesError();
+		
+		if(productoId!=null){
+			if(!productoId.isEmpty()){
+				Producto producto=new ProductoDAO().findById(new Long(productoId));
+				request.setAttribute("producto", producto);
+				requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+			}else{
+				mensajes.getMensajes().add("Debe elegir un producto a eliminar");
+			}
+		}else{
+			mensajes.getMensajes().add("Debe elegir un producto a eliminar");
+		}
+		if(!mensajes.getMensajes().isEmpty()){
+			request.setAttribute("errores", mensajes);
+			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+		}
+		
+		requestDispatcher.forward(request, response);
+	}
+	
+	protected void doAceptarEliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String productoId=request.getParameter("productoid");
+		Producto producto=new ProductoDAO().findById(new Long(productoId));
+		new ProductoDAO().eliminacion(producto);
+		request.setAttribute("producto", producto);
+		String mensaje="El producto ha sido eliminado";
+		request.setAttribute("mensaje", mensaje);
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+		requestDispatcher.forward(request, response);
+		
+	}
+	/*
+	 * 
+	 */
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -349,6 +460,18 @@ public class MenuAdministrador extends HttpServlet {
 		if(request.getQueryString().compareTo("actualizar_existencias")==0){
 			doActualizarExistencias(request, response);
 		}
+		if(request.getQueryString().compareTo("abrir_eliminar_producto")==0){
+			doAbrirEliminarProducto(request, response);
+		}
+		if(request.getQueryString().compareTo("buscar_eliminar_producto")==0){
+			doBuscarEliminarProducto(request, response);
+		}
+		if(request.getQueryString().compareTo("aceptar_eliminar_producto")==0){
+			doEliminarProductoLista(request, response);
+		}
+		if(request.getQueryString().compareTo("eliminar")==0){
+			doAceptarEliminar(request, response);
+		}						
 	}
 
 }
