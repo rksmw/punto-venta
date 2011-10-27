@@ -29,6 +29,9 @@ public class Producto implements Serializable {
 	@Column(name="nombre", nullable=false )
 	private String nombre;
 	
+	@Column(name="eliminado",nullable=false)
+	private boolean eliminado=false;
+	
 	@OneToOne(targetEntity=Marca.class,cascade=CascadeType.ALL)
 	private Marca marca;
 	@OneToOne(mappedBy="producto")
@@ -124,6 +127,16 @@ public class Producto implements Serializable {
 
 	public void setProductoAlmacen(ProductoAlmacen productoAlmacen) {
 		this.productoAlmacen = productoAlmacen;
+	}
+
+
+	public boolean isEliminado() {
+		return eliminado;
+	}
+
+
+	public void setEliminado(boolean eliminado) {
+		this.eliminado = eliminado;
 	}
    
 }

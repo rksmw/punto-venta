@@ -12,7 +12,7 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 	public Producto buscarProductoPorClave(String clave){
 		Producto p=null;
 		try{
-			p=(Producto)getEntityManager().createQuery("FROM Producto as p where p.codigo=:clave").setParameter("clave", clave)
+			p=(Producto)getEntityManager().createQuery("FROM Producto as p where p.codigo=:clave and p.eliminado=false").setParameter("clave", clave)
 					.getSingleResult();
 		}catch (Exception e) {
 
@@ -25,18 +25,18 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 		
 		try{
 			p=(Producto)getEntityManager()
-					.createQuery("FROM Producto as p where p.nombre = :nombre")
+					.createQuery("FROM Producto as p where p.nombre = :nombre and eliminado=false")
 					.setParameter("nombre", nombre)
 					.getSingleResult();
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 		return p;
 	}
 	@SuppressWarnings("unchecked")
 	public ArrayList<Producto> buscarProductosPorNombre(String nombre){
 		nombre=nombre.toLowerCase();
-		String query="FROM Producto as p WHERE lcase(p.nombre) like '%"+nombre+"%' order by p.nombre ";
+		String query="FROM Producto as p WHERE lcase(p.nombre) like '%"+nombre+"%' and p.eliminado=false order by p.nombre ";
 		ArrayList<Producto> productos=null;
 		try{
 			//productos=(ArrayList<Producto>)getEntityManager().createQuery("From Producto where lcase(nombre) like '%:nombre%'")
@@ -47,6 +47,12 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 			e.printStackTrace();
 		}
 		return productos;
+	}
+	
+	public void eliminacion(Producto p){
+		p.setEliminado(true);
+		merge(p);
+		
 	}
 
 }

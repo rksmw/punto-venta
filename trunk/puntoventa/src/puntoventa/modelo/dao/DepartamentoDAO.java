@@ -33,7 +33,7 @@ public class DepartamentoDAO extends GenericDAOImpl<Departamento, Long> {
 			for(Iterator<Departamento> iterator=todo.iterator();iterator.hasNext();){
 				Departamento departamento=iterator.next();
 				departamento.setProductos(null);
-				List<Producto> productos=getEntityManager().createQuery("From Producto where departamento.id=:did order by nombre")
+				List<Producto> productos=getEntityManager().createQuery("From Producto where departamento.id=:did and eliminado=false order by nombre")
 						.setParameter("did", departamento.getId()).getResultList();
 				departamento.setProductos(productos);
 				auxiliar.add(departamento);
