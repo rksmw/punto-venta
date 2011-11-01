@@ -36,7 +36,7 @@ public class MenuCajero extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher requestDispatcher=null;
 		if(request.getQueryString().compareTo("abrir_punto_venta")==0){
-			requestDispatcher=getServletContext().getRequestDispatcher("/cajero/productos_para_vender.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/cajero/productos_para_vender.jsp");
 		}
 		requestDispatcher.forward(request, response);
 	}

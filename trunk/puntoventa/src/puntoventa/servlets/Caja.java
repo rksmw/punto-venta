@@ -89,7 +89,7 @@ public class Caja extends HttpServlet {
 			request.setAttribute("mensaje", mensaje);
 		}
 		requestDispatcher = getServletContext().getRequestDispatcher(
-				"/cajero/productos_para_vender.jsp");
+				"/sesiones/cajero/productos_para_vender.jsp");
 		requestDispatcher.forward(request, response);
 
 		/*
@@ -112,10 +112,10 @@ public class Caja extends HttpServlet {
 		if (producto != null) {
 			request.setAttribute("producto", producto);
 			requestDispatcher = getServletContext().getRequestDispatcher(
-					"/cajero/productos.jsp");
+					"/sesiones/cajero/productos.jsp");
 		} else {
 			requestDispatcher = getServletContext().getRequestDispatcher(
-					"/cajero/noencontrado.jsp");
+					"/sesiones/cajero/noencontrado.jsp");
 		}
 		requestDispatcher.forward(request, response);
 	}
@@ -148,14 +148,14 @@ public class Caja extends HttpServlet {
 		}
 		}
 		RequestDispatcher requestDispatcher = getServletContext()
-				.getRequestDispatcher("/cajero/productos_para_vender.jsp");
+				.getRequestDispatcher("/sesiones/cajero/productos_para_vender.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
 	protected void doCargarDialogoAdministrador(HttpServletRequest request,	HttpServletResponse response) throws ServletException, IOException {
 		String quitar=request.getParameter("quitarlistar");
 		request.setAttribute("productoquitar",quitar);
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/cajero/pideclave.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/cajero/pideclave.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}
@@ -174,7 +174,7 @@ public class Caja extends HttpServlet {
 			}
 			session.removeAttribute("productos");			
 		}
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/cajero/productos_para_vender.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/cajero/productos_para_vender.jsp");
 		requestDispatcher.forward(request, response);
 		//pageContext.servletContext
 		//getServletContext().getContextPath()

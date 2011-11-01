@@ -49,7 +49,7 @@ public class MenuAdministrador extends HttpServlet {
 			request.setAttribute("departamentos", departamentos);			
 		}
 		RequestDispatcher requestDispatcher=null;
-		requestDispatcher=getServletContext().getRequestDispatcher("/administrador/agregardepartamento.jsp");
+		requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregardepartamento.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	protected void doAgregarDepartamento(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
@@ -88,13 +88,13 @@ public class MenuAdministrador extends HttpServlet {
 		
 		request.setAttribute("departamentos", departamentos);
 		
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/agregardepartamento.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregardepartamento.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
 	
 	protected void doAbriragregarProductoPorClave(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/actualizarexistencias.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/actualizarexistencias.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
@@ -134,7 +134,7 @@ public class MenuAdministrador extends HttpServlet {
 			request.setAttribute("error", error);
 		}
 		request.setAttribute("producto", productoAlmacen);
-		requestDispatcher=getServletContext().getRequestDispatcher("/administrador/ingresarexistencias.jsp");
+		requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/ingresarexistencias.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
@@ -160,10 +160,10 @@ public class MenuAdministrador extends HttpServlet {
 			errores="Debe ingresar un código de producto";
 		}
 		if(errores.isEmpty()){
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/ingresarexistencias.jsp");			
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/ingresarexistencias.jsp");			
 		}else{
 			request.setAttribute("error", errores);
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/actualizarexistencias.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/actualizarexistencias.jsp");
 		}
 		requestDispatcher.forward(request, response);
 	}
@@ -173,7 +173,7 @@ public class MenuAdministrador extends HttpServlet {
 		MarcaDAO marcaDAO=new MarcaDAO();
 		ArrayList<Marca> marcas=(ArrayList<Marca>)marcaDAO.findAll();
 		request.setAttribute("marcas", marcas);
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/agregarmarca.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregarmarca.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	protected void doGuardarMarca(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -206,7 +206,7 @@ public class MenuAdministrador extends HttpServlet {
 		MarcaDAO marcaDAO=new MarcaDAO();
 		ArrayList<Marca> marcas=(ArrayList<Marca>)marcaDAO.findAll();
 		request.setAttribute("marcas", marcas);
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/agregarmarca.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregarmarca.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
@@ -230,7 +230,7 @@ public class MenuAdministrador extends HttpServlet {
 		request.setAttribute("marcas", marcas);
 		request.setAttribute("departamentos", departamentos);
 		
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/nuevoproducto.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/nuevoproducto.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}
@@ -291,11 +291,11 @@ public class MenuAdministrador extends HttpServlet {
 		
 		if(errores.isErrores()){
 			request.setAttribute("errores", errores);
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/nuevoproducto.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/nuevoproducto.jsp");
 		}else{
 			productoAlmacen.setProducto(producto);
 			new ProductoAlmacenDAO().persist(productoAlmacen);
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/nuevoproducto.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/nuevoproducto.jsp");
 		}
 		
 		MarcaDAO marcaDAO=new MarcaDAO();
@@ -320,7 +320,7 @@ public class MenuAdministrador extends HttpServlet {
 	}
 	
 	protected void doAbrirEliminarProducto(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/buscarparaeliminar.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
@@ -357,34 +357,34 @@ public class MenuAdministrador extends HttpServlet {
 				producto=productoDAO.buscarProductoPorClave(criterio);
 				if(producto!=null){
 					request.setAttribute("producto", producto);
-					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/eliminarproducto.jsp");
 				}
 				else{
 					errores.getMensajes().add("El producto con el codigo "+criterio+" no se encuentra");
 					request.setAttribute("errores", errores);
-					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/buscarparaeliminar.jsp");
 				}
 			}else{//Aun no ha sido realizada esta parte
 				productos=productoDAO.buscarProductosPorNombre(criterio);
 				if(productos!=null){
 					if(!productos.isEmpty()){
 						request.setAttribute("productos", productos);
-						requestDispatcher=getServletContext().getRequestDispatcher("/administrador/listarparaeliminar.jsp");
+						requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/listarparaeliminar.jsp");
 					}else{
 						errores.getMensajes().add("No se encontraron productos");
 						request.setAttribute("errores", errores);
-						requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+						requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/buscarparaeliminar.jsp");
 					}
 					
 				}else{
 					errores.getMensajes().add("No se encontraron productos");
 					request.setAttribute("errores", errores);
-					requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/buscarparaeliminar.jsp");
 				}
 			}
 		}else{
 			request.setAttribute("errores", errores);
-			requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 		}
 		requestDispatcher.forward(request, response);
 	}
@@ -399,7 +399,7 @@ public class MenuAdministrador extends HttpServlet {
 			if(!productoId.isEmpty()){
 				Producto producto=new ProductoDAO().findById(new Long(productoId));
 				request.setAttribute("producto", producto);
-				requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+				requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/eliminarproducto.jsp");
 			}else{
 				mensajes.getMensajes().add("Debe elegir un producto a eliminar");
 			}
@@ -408,7 +408,7 @@ public class MenuAdministrador extends HttpServlet {
 		}
 		if(!mensajes.getMensajes().isEmpty()){
 			request.setAttribute("errores", mensajes);
-			requestDispatcher=getServletContext().getRequestDispatcher("/administrador/buscarparaeliminar.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/buscarparaeliminar.jsp");
 		}
 		
 		requestDispatcher.forward(request, response);
@@ -421,7 +421,7 @@ public class MenuAdministrador extends HttpServlet {
 		request.setAttribute("producto", producto);
 		String mensaje="El producto ha sido eliminado";
 		request.setAttribute("mensaje", mensaje);
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/administrador/eliminarproducto.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/eliminarproducto.jsp");
 		requestDispatcher.forward(request, response);
 		
 	}
