@@ -100,7 +100,7 @@ $(function() {
 	<tr>
 		<td><input type="button" value="Quitar producto"  onclick="javascript:cargar_dialogo_supervisor();" class="ui-state-active ui-corner-all"></td>
 		<td></td>
-		<td><input type="button" value="Cobrar" class="ui-state-active ui-corner-all"></td>
+		<td><input type="button" value="Cobrar" onclick="javascript:cobrar();" class="ui-state-active ui-corner-all"></td>
 	</tr>
 </table>
 </form>

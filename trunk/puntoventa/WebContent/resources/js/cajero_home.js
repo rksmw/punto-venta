@@ -93,6 +93,21 @@ function cargar_dialogo_supervisor(){
 }
 
 
+function cobrar(){
+
+	$.ajax({
+		type : "POST",
+		url : "caja?cobrar",
+		data: "parameter=1",
+		success : function(data) {
+			$("#contenedor-principal").html(data);			
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+
 function openDialogSuper(){
 	$( "#supervisor" ).dialog( "open" );
 	}
