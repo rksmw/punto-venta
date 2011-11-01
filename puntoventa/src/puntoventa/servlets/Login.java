@@ -54,10 +54,10 @@ public class Login extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("usuario", usuario);
 			if(usuario.getRol().compareTo("cajero")==0){
-				requestDispatcher=getServletContext().getRequestDispatcher("/cajero/home.jsp");
+				requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/cajero/home.jsp");
 				requestDispatcher.forward(request, response);
 			}else{
-				requestDispatcher=getServletContext().getRequestDispatcher("/administrador/home.jsp");
+				requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/home.jsp");
 				requestDispatcher.forward(request, response);
 			}
 		}else{

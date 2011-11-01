@@ -40,12 +40,12 @@ public class Consultas extends HttpServlet {
 		ArrayList<Departamento> departamentos;
 		departamentos=(ArrayList<Departamento>)new DepartamentoDAO().buscarTodo();
 		request.setAttribute("departamentos", departamentos);
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/comun/consultartodo.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/consultartodo.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	
 	protected void doAbrirMostrarProducto(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
-		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	protected void doMostrarProducto(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
@@ -81,34 +81,34 @@ public class Consultas extends HttpServlet {
 				producto=productoDAO.buscarProductoPorClave(criterio);
 				if(producto!=null){
 					request.setAttribute("producto", producto);
-					requestDispatcher=getServletContext().getRequestDispatcher("/comun/mostrarunproducto.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/mostrarunproducto.jsp");
 				}
 				else{
 					errores.getMensajes().add("El producto con el codigo "+criterio+" no se encuentra");
 					request.setAttribute("errores", errores);
-					requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 				}
 			}else{
 				productos=productoDAO.buscarProductosPorNombre(criterio);
 				if(productos!=null){
 					if(!productos.isEmpty()){
 						request.setAttribute("productos", productos);
-						requestDispatcher=getServletContext().getRequestDispatcher("/comun/mostrarvariosproductos.jsp");
+						requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/mostrarvariosproductos.jsp");
 					}else{
 						errores.getMensajes().add("No se encontraron productos");
 						request.setAttribute("errores", errores);
-						requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+						requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 					}
 					
 				}else{
 					errores.getMensajes().add("No se encontraron productos");
 					request.setAttribute("errores", errores);
-					requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+					requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 				}
 			}
 		}else{
 			request.setAttribute("errores", errores);
-			requestDispatcher=getServletContext().getRequestDispatcher("/comun/nombreocodigo.jsp");
+			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/comun/nombreocodigo.jsp");
 		}
 		requestDispatcher.forward(request, response);
 	}
