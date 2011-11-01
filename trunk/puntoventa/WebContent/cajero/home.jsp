@@ -61,7 +61,7 @@ $(document).ready(function(){
         	</ul>  
     	</li>
           
-        <li><a href="#">cerrar sesión</a></li>
+        <li><a href="#" onclick="javascript:cerrar_session();">cerrar sesión</a></li>
     </ul>  
 <br/>
 <br/>

@@ -39,3 +39,18 @@ function mostrar_producto(){
 		}
 	});		
 }
+
+function cerrar_session(){
+	$.ajax({
+		type : "POST",
+		url : "cerrarSesion.do",
+		data: "parameter=2",
+		success : function(data) {
+			$('html').html(data);
+			$('#tabs').tabs();
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}

@@ -43,7 +43,6 @@ $(document).ready(function(){
             $(this).removeClass("subhover"); //On hover out, remove class "subhover"  
     });  
 
-    $(".currency").currency();
   
 });  
 </script>
@@ -70,7 +69,7 @@ $(document).ready(function(){
             	<li><a href="#" onclick="javascript:abrir_mostrar_producto();" >Consultar por nombre o código</a></li>  
         	</ul>  
     	</li>        
-        <li><a href="#">cerrar sesión</a></li>
+        <li><a href="#" onclick="javascript:cerrar_session();">cerrar sesión</a></li>
     </ul>  
 <br/>
 <center>

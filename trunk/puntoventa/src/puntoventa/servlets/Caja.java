@@ -176,8 +176,11 @@ public class Caja extends HttpServlet {
 		}
 		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/cajero/productos_para_vender.jsp");
 		requestDispatcher.forward(request, response);
+		//pageContext.servletContext
+		//getServletContext().getContextPath()
+		//pageContext.servletContext.contextPath
+		
 	}
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

@@ -6,22 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Punto de Venta</title>
 
-<link type="text/css" href="resources/css/posicionlogin.css" rel="stylesheet"/>
-<link href="resources/css/style.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="${pageContext.servletContext.contextPath}/resources/css/posicionlogin.css" rel="stylesheet"/>
 
-<link type="text/css" href="resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
 
-<script type="text/javascript" src="resources/jquery/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="resources/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
+<link type="text/css" href="${pageContext.servletContext.contextPath}/resources/jquery/css/dot-luv/jquery-ui-1.8.16.custom.css" rel="stylesheet"/> 
 
-<script type="text/javascript" src="resources/jquery/js/jquery.ui.core.js"></script>
-<script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/jquery/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/jquery/js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/jquery/js/jquery.ui.core.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/jquery/js/jquery.ui.widget.js"></script>
 
 <script type="text/javascript">
-$(function(){
+$(document).ready(function () {
+
 
 	// Tabs
 	$('#tabs').tabs();
+
+	$('#tabs').tabs('load', 0);
+	
 });
 </script>				
 </head>

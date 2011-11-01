@@ -64,4 +64,14 @@
     <servlet-name>consultas.do</servlet-name>
     <url-pattern>/consultas.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>cerrarSesion.do</display-name>
+    <servlet-name>cerrarSesion.do</servlet-name>
+    <servlet-class>puntoventa.servlets.CerrarSesion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cerrarSesion.do</servlet-name>
+    <url-pattern>/cerrarSesion.do</url-pattern>
+  </servlet-mapping>
 </web-app>
