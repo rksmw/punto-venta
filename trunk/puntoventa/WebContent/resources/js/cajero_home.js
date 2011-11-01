@@ -55,4 +55,44 @@ function agregar_producto_lista(){
 		}
 	});		
 }
+function eliminar_producto_lista(quitar,clave){
+	
+	
+	$.ajax({
+		type : "POST",
+		url : "caja?eliminar_producto_lista",
+		data: $('#envio-form').serialize()+"&idproductoeliminar="+$('#quitarlista').val(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+			$('#ui-dialog').remove();
+			$('#supervisor').remove();
+			$('#resultado').html("");
+			$('div').remove('.ui-dialog');
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
 
+
+function cargar_dialogo_supervisor(){
+	valorradio=$('input[name=quitarlista]:checked','#myForm').val();
+	$.ajax({
+		type : "POST",
+		url : "caja?cargar_dialogo_supervisor",
+		data: "quitarlistar="+valorradio,
+		success : function(data) {
+			$("#resultado").html(data);
+			$( "#supervisor" ).dialog( "open" );
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+
+
+function openDialogSuper(){
+	$( "#supervisor" ).dialog( "open" );
+	}

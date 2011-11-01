@@ -21,5 +21,16 @@ public class UsuarioDAO extends GenericDAOImpl<Usuario, Long> {
 		return u;
 	}
 	
+	public Usuario obtenerUsuarioPorClave(String clave){
+		Usuario u=null;
+		try{
+			u=(Usuario)getEntityManager().createQuery("FROM Usuario WHERE claveSupervisor=:clave")
+					.setParameter("clave", clave).getSingleResult();
+		}catch(Exception e){
+			
+		}
+		return u;
+	}
+	
 
 }
