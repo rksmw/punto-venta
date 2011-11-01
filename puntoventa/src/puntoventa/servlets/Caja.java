@@ -3,6 +3,7 @@ package puntoventa.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import puntoventa.modelo.Producto;
 import puntoventa.modelo.ProductoVendido;
 import puntoventa.modelo.Usuario;
 import puntoventa.modelo.dao.ProductoDAO;
+import puntoventa.modelo.dao.ProductoVendidoDAO;
 import puntoventa.modelo.dao.UsuarioDAO;
 
 /**
@@ -158,6 +160,24 @@ public class Caja extends HttpServlet {
 		
 	}
 
+	protected void doCobrar(HttpServletRequest request,	HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session=request.getSession();
+		if(session.getAttribute("productos")!=null){
+		
+			@SuppressWarnings("unchecked")
+			ArrayList<ProductoVendido> productos=(ArrayList<ProductoVendido>)session.getAttribute("productos");
+			ProductoVendidoDAO productoVendidoDAO=new ProductoVendidoDAO();
+			for(Iterator<ProductoVendido>iterator=productos.iterator();iterator.hasNext();){
+				ProductoVendido p=iterator.next();
+				p.getProducto().getProductoAlmacen().setExistencias(p.getProducto().getProductoAlmacen().getExistencias()-p.getUnidades());
+				productoVendidoDAO.persist(p);				
+			}
+			session.removeAttribute("productos");			
+		}
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/cajero/productos_para_vender.jsp");
+		requestDispatcher.forward(request, response);
+	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -176,7 +196,9 @@ public class Caja extends HttpServlet {
 		if (request.getQueryString().compareTo("cargar_dialogo_supervisor") == 0) {
 			doCargarDialogoAdministrador(request, response);
 		}
-		
+		if (request.getQueryString().compareTo("cobrar") == 0) {
+			doCobrar(request, response);
+		}
 	}
 
 }
