@@ -30,7 +30,7 @@ $(function() {
 	<h1>Terminal del usuario ${usuario.nombre}</h1>
 </center>
 <div class="ui-widget-header ui-widget ui-corner-all">
-	<form method="post" action="">
+	<form >
 	<table>
 		<tr>
 			<td>Clave del producto</td>
@@ -44,19 +44,27 @@ $(function() {
 <!--  <div class="center_venta_lista_productos ui-tabs ui-widget ui-widget-content ui-corner-all">  -->
 <div class="center_venta_busqueda ui-widget-header ui-widget ui-corner-all">
 
-<form>
+<form name="myForm" id="myForm">
 <table>
 	<tr>
+		<th width="70px">Quitar</th>
 		<th>Nombre del producto</th>
-		<th>Cantidad</th>
+		<th width="100px">Cantidad</th>
 		<th>Precio</th>
+		<th>Sub-total</th>
 	</tr>
 	<c:forEach items="${productos}" var="productoVendido" varStatus="status">
 		<tr>
-			<td>${productoVendido.producto.nombre}</td>
-			<td>${productoVendido.unidades}</td>
+			<td align="center">
+				<input type="radio" name="quitarlista" id="quitarlista" value="${status.index}"/> 
+			</td>
+			<td align="center">${productoVendido.producto.nombre}</td>
+			<td align="center">${productoVendido.unidades}</td>
 			<td>
 				<fmt:formatNumber value="${productoVendido.producto.precio}" type="currency" />
+			</td>
+			<td align="center">
+				<fmt:formatNumber value="${productoVendido.producto.precio*productoVendido.unidades}" type="currency"/>
 			</td>
 		</tr>
 	</c:forEach>
@@ -90,7 +98,7 @@ $(function() {
 	</tr>
 	<tr></tr>
 	<tr>
-		<td><input type="button" value="Quitar producto" class="ui-state-active ui-corner-all"></td>
+		<td><input type="button" value="Quitar producto"  onclick="javascript:cargar_dialogo_supervisor();" class="ui-state-active ui-corner-all"></td>
 		<td></td>
 		<td><input type="button" value="Cobrar" class="ui-state-active ui-corner-all"></td>
 	</tr>
