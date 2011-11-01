@@ -15,7 +15,7 @@ public class ProductoDAO extends GenericDAOImpl<Producto, Long> {
 			p=(Producto)getEntityManager().createQuery("FROM Producto as p where p.codigo=:clave and p.eliminado=false").setParameter("clave", clave)
 					.getSingleResult();
 		}catch (Exception e) {
-
+			//e.printStackTrace();
 		}
 		return p;
 	}

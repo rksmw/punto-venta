@@ -16,6 +16,11 @@
 
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.core.js"></script>
 <script type="text/javascript" src="resources/jquery/js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.button.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.position.js"></script>
+<script type="text/javascript" src="resources/jquery/js/jquery.ui.resizable.js"></script>
 
 <script type="text/javascript" src="resources/js/cajero_home.js"></script>
 <script type="text/javascript" src="resources/js/operaciones_comunes.js"></script>
@@ -40,8 +45,7 @@ $(document).ready(function(){
             $(this).addClass("subhover"); //On hover over, add class "subhover"  
         }, function(){  //On Hover Out  
             $(this).removeClass("subhover"); //On hover out, remove class "subhover"  
-    });  
-  
+    });   
 });  
 </script>
 </head>

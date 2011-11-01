@@ -1,10 +1,17 @@
 package puntoventa.modelo;
 
 import java.io.Serializable;
-import java.lang.Integer;
-import java.lang.Long;
-import javax.persistence.*;
-import puntoventa.modelo.Producto;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: ProductoVendido
@@ -19,6 +26,8 @@ public class ProductoVendido implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="producto_vendido_id")
 	private Long id;
+	
+	private Date fechaCompra;
 	
 	
 	@Column(name="unidades_vendidas",nullable=false)
@@ -53,6 +62,12 @@ public class ProductoVendido implements Serializable {
 
 	public void setUnidades(Integer unidades) {
 		this.unidades = unidades;
+	}
+	public Date getFechaCompra() {
+		return fechaCompra;
+	}
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
 	}
    
 }
