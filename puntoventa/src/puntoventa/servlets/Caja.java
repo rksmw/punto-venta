@@ -129,6 +129,7 @@ public class Caja extends HttpServlet {
 		if (u != null) {
 
 			if (idEliminar != null) {
+				try{
 				Long eliminar = new Long(idEliminar);
 				HttpSession session = request.getSession();
 				if (session.getAttribute("productos") != null) {
@@ -139,7 +140,10 @@ public class Caja extends HttpServlet {
 					session.removeAttribute("productos");
 					session.setAttribute("productos", productos);
 				}
+			}catch(Exception e){
+				
 			}
+		}
 		}
 		RequestDispatcher requestDispatcher = getServletContext()
 				.getRequestDispatcher("/cajero/productos_para_vender.jsp");
