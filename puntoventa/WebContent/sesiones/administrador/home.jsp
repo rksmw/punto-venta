@@ -75,6 +75,7 @@ $(document).ready(function(){
     		<ul class="subnav">
     			<li><a href="#" onclick="javascript:abrirnuevo();">Todos los productos</a></li>
     			<li><a href="#" onclick="javascript:abrir_ingreso_productos();">Productos ingresados</a></li>
+    			<li><a href="#" onclick="javascript:abrirmasvendidos();">Productos mas vendidos</a></li>
     			<li><a href="#"></a></li>
     			
     		</ul>
