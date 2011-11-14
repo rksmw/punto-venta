@@ -1,6 +1,7 @@
 package puntoventa.modelo.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,10 +22,18 @@ public class DepartamentoDAO extends GenericDAOImpl<Departamento, Long> {
 		}
 		return departamento;
 	}
+	
+	public static Collection<Departamento> todosPorDeartamento(){
+		return new DepartamentoDAO().buscarTodo();
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	public ArrayList<Departamento> buscarTodo(){
+		
 		ArrayList<Departamento>todo=null;
 		ArrayList<Departamento>auxiliar=new ArrayList<Departamento>();
+		getEntityManager().clear();
 		try{
 			todo=(ArrayList<Departamento>)getEntityManager()
 					.createQuery("FROM Departamento dep order by dep.nombreDepartamento")
@@ -35,6 +44,7 @@ public class DepartamentoDAO extends GenericDAOImpl<Departamento, Long> {
 				departamento.setProductos(null);
 				List<Producto> productos=getEntityManager().createQuery("From Producto where departamento.id=:did and eliminado=false order by nombre")
 						.setParameter("did", departamento.getId()).getResultList();
+				refresh(departamento);
 				departamento.setProductos(productos);
 				auxiliar.add(departamento);
 			}

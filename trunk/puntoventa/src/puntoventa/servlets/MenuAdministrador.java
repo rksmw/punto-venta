@@ -14,10 +14,12 @@ import puntoventa.modelo.Departamento;
 import puntoventa.modelo.Marca;
 import puntoventa.modelo.Producto;
 import puntoventa.modelo.ProductoAlmacen;
+import puntoventa.modelo.ProductoRegistrado;
 import puntoventa.modelo.dao.DepartamentoDAO;
 import puntoventa.modelo.dao.MarcaDAO;
 import puntoventa.modelo.dao.ProductoAlmacenDAO;
 import puntoventa.modelo.dao.ProductoDAO;
+import puntoventa.modelo.dao.ProductoRegistradoDAO;
 import puntoventa.util.MensajesError;
 
 /**
@@ -107,6 +109,7 @@ public class MenuAdministrador extends HttpServlet {
 		ProductoAlmacen productoAlmacen=new ProductoAlmacenDAO().findById(new Long(idProductoAlmacenRecuperado));
 		
 		RequestDispatcher requestDispatcher=null;
+		int existenciasNuevas=productoAlmacen.getExistencias();
 		
 		if(existenciasRecuperadas!=null){
 			if(!existenciasRecuperadas.isEmpty()){
@@ -116,6 +119,7 @@ public class MenuAdministrador extends HttpServlet {
 						error="Las existencias deben ser mayor a 0";
 					}else{
 						productoAlmacen.setExistencias(existencias);
+						existenciasNuevas=existencias-existenciasNuevas;
 					}
 				}catch(Exception e){
 					error="El formato del numero de existencias no es correcto";
@@ -127,7 +131,16 @@ public class MenuAdministrador extends HttpServlet {
 			error="Debe ingresar un numero de existencias";
 		}
 		if(error.isEmpty()){
-			new ProductoAlmacenDAO().merge(productoAlmacen);		
+			
+			ProductoRegistrado productoRegistrado=new ProductoRegistrado();
+			productoRegistrado.setNumeroIngresados(existenciasNuevas);
+			productoRegistrado.setProducto(productoAlmacen.getProducto());
+			new ProductoRegistradoDAO().persist(productoRegistrado);
+			
+			new ProductoAlmacenDAO().merge(productoAlmacen);
+			
+			
+			
 			String mensaje="Las existencias se han actualizado";
 			request.setAttribute("mensaje", mensaje);
 		}else{
@@ -293,8 +306,13 @@ public class MenuAdministrador extends HttpServlet {
 			request.setAttribute("errores", errores);
 			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/nuevoproducto.jsp");
 		}else{
-			productoAlmacen.setProducto(producto);
+			productoAlmacen.setProducto(producto);																
 			new ProductoAlmacenDAO().persist(productoAlmacen);
+			
+			ProductoRegistrado productoRegistrado=new ProductoRegistrado();			
+			productoRegistrado.setNumeroIngresados(productoAlmacen.getExistencias());
+			productoRegistrado.setProducto(producto);
+			new ProductoRegistradoDAO().persist(productoRegistrado);
 			requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/nuevoproducto.jsp");
 		}
 		
