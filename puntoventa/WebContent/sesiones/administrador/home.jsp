@@ -20,6 +20,7 @@
 
 <script type="text/javascript" src="resources/js/administrador_home.js"></script>
 <script type="text/javascript" src="resources/js/operaciones_comunes.js"></script>
+<script type="text/javascript" src="resources/js/reportes.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){  
@@ -69,6 +70,15 @@ $(document).ready(function(){
             	<li><a href="#" onclick="javascript:abrir_mostrar_producto();" >Consultar por nombre o código</a></li>  
         	</ul>  
     	</li>        
+    	<li>
+    		<a href="#">Reportes</a>
+    		<ul class="subnav">
+    			<li><a href="#" onclick="javascript:abrirnuevo();">Todos los productos</a></li>
+    			<li><a href="#" onclick="javascript:abrir_ingreso_productos();">Productos ingresados</a></li>
+    			<li><a href="#"></a></li>
+    			
+    		</ul>
+    	</li>
         <li><a href="#" onclick="javascript:cerrar_session();">cerrar sesión</a></li>
     </ul>  
 <br/>
