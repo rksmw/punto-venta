@@ -202,3 +202,91 @@ function eliminar(){
 		}
 	});
 }
+function home(){
+	$("#contenedor-principal").html("");
+}
+
+function abrir_crear_cajero(){
+	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?abrir_crear_cajero",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+
+
+function crear_cajero(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?crear_cajero",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+function abrir_crear_supervisor(){
+	$("#contenedor-principal").html(" <center><img  width='100px' height='100px' alt='loading...' src='resources/images/cargando.gif'/></center>");
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?abrir_crear_supervisor",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+function crear_supervisor(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?crear_supervisor",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+
+function abrir_actualizar_datos(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?abrir_actualizar_datos",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+
+function actualizar_mis_datos(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?actualizar_mis_datos",
+		data: $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}

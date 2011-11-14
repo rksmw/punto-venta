@@ -51,17 +51,21 @@ $(document).ready(function(){
 <body>
     <ul class="topnav">                   
         <li>  
-        	<a href="#">Agregar producto</a>  
-        	<ul class="subnav">  
+        	<a href="#">** Productos **</a>  
+        	<ul class="subnav">
+        		<li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
+        		<li><a href="#" onclick="javascript:abrir_crear_marca();">Crear marca</a></li>  
             	<li><a href="#" onclick="javascript:abrir_buscar_clave();">Actualizar existencias</a></li>  
-            	<li><a href="#" onclick="javascript:abrir_nuevo_producto();">Nuevo producto</a></li>            	 
+            	<li><a href="#" onclick="javascript:abrir_nuevo_producto();">Nuevo producto</a></li>
+            	<li><a href="#" onclick="javascript:abrir_eliminar_producto();">Eliminar producto</a></li>
         	</ul>  
-    	</li>  
-         
-         <li><a href="#" onclick="javascript:abrir_eliminar_producto();">Eliminar producto</a></li>
-         
-        <li><a href="#" onclick="javascript:abrir_crear_departamento();">Crear departamento</a></li>
-        <li><a href="#" onclick="javascript:abrir_crear_marca();">Crear marca</a></li>
+    	</li>
+        <li><a href="#">Agregar usuarios</a>
+        	<ul class="subnav">
+        		<li><a href="#" onclick="javascript:abrir_crear_cajero();">Agregar cajero</a></li>
+        		<li><a href="#" onclick="javascript:abrir_crear_supervisor();">Agregar supervisor</a></li>
+        	</ul>
+        </li>
         
         <li>  
         	<a href="#">Consultar productos</a>  
@@ -80,7 +84,16 @@ $(document).ready(function(){
     			
     		</ul>
     	</li>
-        <li><a href="#" onclick="javascript:cerrar_session();">cerrar sesión</a></li>
+    	<li>
+    		<a href="#">${usuario.nombre}</a>
+    		<ul class="subnav">
+    			<li><a href="#" onclick="javascript:abrir_actualizar_datos();">Editar mis datos</a></li>
+    			<li><a href="#" onclick="javascript:cerrar_session();">cerrar sesión</a></li>
+    		</ul>
+    	</li>
+    	
+        
+        <li><a href="#" onclick="javascript:home()">Inicio</a></li>
     </ul>  
 <br/>
 <center>

@@ -9,17 +9,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import puntoventa.modelo.Departamento;
 import puntoventa.modelo.Marca;
 import puntoventa.modelo.Producto;
 import puntoventa.modelo.ProductoAlmacen;
 import puntoventa.modelo.ProductoRegistrado;
+import puntoventa.modelo.Usuario;
 import puntoventa.modelo.dao.DepartamentoDAO;
 import puntoventa.modelo.dao.MarcaDAO;
 import puntoventa.modelo.dao.ProductoAlmacenDAO;
 import puntoventa.modelo.dao.ProductoDAO;
 import puntoventa.modelo.dao.ProductoRegistradoDAO;
+import puntoventa.modelo.dao.UsuarioDAO;
 import puntoventa.util.MensajesError;
 
 /**
@@ -443,6 +446,169 @@ public class MenuAdministrador extends HttpServlet {
 		requestDispatcher.forward(request, response);
 		
 	}
+	
+	protected void doAbrirCrearCajero(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_cajero.jsp");
+		requestDispatcher.forward(request, response);		
+	}
+	protected void doCrearCajero(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String nombreCajero=request.getParameter("nombrecajero");
+		String nombreUsuario=request.getParameter("nombreusuario");
+		String password1=request.getParameter("password1");
+		String password2=request.getParameter("password2");
+		
+		MensajesError errores=new MensajesError();
+		
+		if(nombreCajero.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre para el cajero");
+			errores.setErrores(true);
+		}
+		if(nombreUsuario.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre de usuario");
+			errores.setErrores(true);
+		}
+		if(password1.isEmpty()||password2.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un password");
+			errores.setErrores(true);
+		}
+		if(password1.compareTo(password2)!=0){
+			errores.getMensajes().add("El valor en los campos de password debe ser el mismo");
+			errores.setErrores(true);
+		}
+		if(!errores.isErrores()){
+			Usuario usuario=new Usuario();
+			usuario.setNombre(nombreCajero);
+			usuario.setUsuario(nombreUsuario);
+			usuario.setRol("cajero");
+			usuario.setPassword(password1);
+			new UsuarioDAO().persist(usuario);
+			String mensaje="Se ha guardado el Cajero con nombre "+nombreCajero;
+			request.setAttribute("mensaje", mensaje);			
+		}else{
+			request.setAttribute("errores", errores);
+		}
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_cajero.jsp");
+		requestDispatcher.forward(request, response);		
+	}
+	
+	protected void doAbrirCrearSupervisor(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_supervisor.jsp");
+		requestDispatcher.forward(request, response);		
+	}
+	protected void doCrearSupervisor(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String nombreCajero=request.getParameter("nombrecajero");
+		String nombreUsuario=request.getParameter("nombreusuario");
+		String password1=request.getParameter("password1");
+		String password2=request.getParameter("password2");
+		String clave1=request.getParameter("clave1");
+		String clave2=request.getParameter("clave2");
+		
+		MensajesError errores=new MensajesError();
+		
+		if(nombreCajero.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre para el cajero");
+			errores.setErrores(true);
+		}
+		if(nombreUsuario.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre de usuario");
+			errores.setErrores(true);
+		}
+		if(password1.isEmpty()||password2.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un password");
+			errores.setErrores(true);
+		}
+		
+		if(password1.compareTo(password2)!=0){
+			errores.getMensajes().add("El valor en los campos de password debe ser el mismo");
+			errores.setErrores(true);
+		}
+		
+		if(clave1.isEmpty()||clave2.isEmpty()){
+			errores.getMensajes().add("Debe ingresar una clave");
+			errores.setErrores(true);
+		}
+		if(clave1.compareTo(clave2)!=0){
+			errores.getMensajes().add("El valor en los campos de las claves debe ser el mismo");
+			errores.setErrores(true);
+		}
+		
+		if(!errores.isErrores()){
+			Usuario usuario=new Usuario();
+			usuario.setNombre(nombreCajero);
+			usuario.setUsuario(nombreUsuario);
+			usuario.setClaveSupervisor(clave1);
+			usuario.setRol("suervisor");
+			usuario.setPassword(password1);
+			new UsuarioDAO().persist(usuario);
+			String mensaje="Se ha guardado el Supervisor con nombre "+nombreCajero;
+			request.setAttribute("mensaje", mensaje);			
+		}else{
+			request.setAttribute("errores", errores);
+		}
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_supervisor.jsp");
+		requestDispatcher.forward(request, response);		
+	}
+	
+	protected void doAbrirEditarMisDatos(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/actualizar_mis_datos.jsp");
+		requestDispatcher.forward(request, response);		
+	}
+	protected void doActualizarMisDatos(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String nombre=request.getParameter("nombre");
+		String usuarioreq=request.getParameter("usuario");
+		String password0=request.getParameter("password0");
+		String password1=request.getParameter("password1");
+		String password2=request.getParameter("password2");
+
+		
+		MensajesError errores=new MensajesError();
+		
+		HttpSession session=request.getSession();
+		Usuario usuario=(Usuario)session.getAttribute("usuario");
+		
+		if(nombre.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre para el cajero");
+			errores.setErrores(true);
+		}
+		if(usuarioreq.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un nombre de usuario");
+			errores.setErrores(true);		
+		}
+		if(password0.isEmpty()){
+			errores.getMensajes().add("Debe ingresar el password anterior");
+			errores.setErrores(true);
+		}
+		if(password1.isEmpty()||password2.isEmpty()){
+			errores.getMensajes().add("Debe ingresar un password");
+			errores.setErrores(true);
+		}
+		
+		if(password1.compareTo(password2)!=0){
+			errores.getMensajes().add("El valor en los campos de password debe ser el mismo");
+			errores.setErrores(true);
+		}
+		
+		if(password0.compareTo(usuario.getPassword())!=0){
+			errores.getMensajes().add("El password actual de la sesion no coincide con el ingresado");
+			errores.setErrores(true);
+		}
+		
+		if(!errores.isErrores()){
+			
+			usuario.setNombre(nombre);
+			usuario.setUsuario(usuarioreq);
+			usuario.setPassword(password1);			
+			
+			usuario.setPassword(password1);
+			new UsuarioDAO().merge(usuario);
+			String mensaje="Se han actualizado los datos"+nombre;
+			request.setAttribute("mensaje", mensaje);			
+		}else{
+			request.setAttribute("errores", errores);
+		}
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_supervisor.jsp");
+		requestDispatcher.forward(request, response);		
+	}
 	/*
 	 * 
 	 */
@@ -489,7 +655,26 @@ public class MenuAdministrador extends HttpServlet {
 		}
 		if(request.getQueryString().compareTo("eliminar")==0){
 			doAceptarEliminar(request, response);
-		}						
+		}
+		if(request.getQueryString().compareTo("crear_cajero")==0){
+			doCrearCajero(request, response);
+		}
+		if(request.getQueryString().compareTo("abrir_crear_cajero")==0){
+			doAbrirCrearCajero(request, response);
+		}
+		
+		if(request.getQueryString().compareTo("crear_supervisor")==0){
+			doCrearSupervisor(request, response);
+		}
+		if(request.getQueryString().compareTo("abrir_crear_supervisor")==0){
+			doAbrirCrearSupervisor(request, response);
+		}
+		if(request.getQueryString().compareTo("abrir_actualizar_datos")==0){
+			doAbrirEditarMisDatos(request, response);
+		}
+		if(request.getQueryString().compareTo("actualizar_mis_datos")==0){
+			doActualizarMisDatos(request, response);
+		}
 	}
 
 }
