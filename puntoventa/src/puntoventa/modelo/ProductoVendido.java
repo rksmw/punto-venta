@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Entity implementation class for Entity: ProductoVendido
@@ -27,6 +29,8 @@ public class ProductoVendido implements Serializable {
 	@Column(name="producto_vendido_id")
 	private Long id;
 	
+	@Column(name="fecha_compra")
+	@Temporal(TemporalType.DATE)
 	private Date fechaCompra;
 	
 	
