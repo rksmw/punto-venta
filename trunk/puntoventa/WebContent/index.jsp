@@ -19,17 +19,18 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-
+	
 
 	// Tabs
 	$('#tabs').tabs();
 
 	$('#tabs').tabs('load', 0);
+	$('body').css('background-image',"url(resources/images/azul.jpg)");
 	
 });
 </script>				
 </head>
-<body class="resto" background="resources/images/azul.jpg">
+<body class="resto">
 <div id="header">
 	Inicio de sesión del sistema
 	

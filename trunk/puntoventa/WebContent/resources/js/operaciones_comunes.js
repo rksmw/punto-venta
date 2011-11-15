@@ -46,8 +46,9 @@ function cerrar_session(){
 		url : "cerrarSesion.do",
 		data: "parameter=2",
 		success : function(data) {
-			$('html').html(data);
+			$('body').html(data);
 			$('#tabs').tabs();
+			$('body').css('background-image',"url(resources/images/azul.jpg)");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(XMLHttpRequest.status + " ERROR!");
