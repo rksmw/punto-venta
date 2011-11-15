@@ -537,6 +537,11 @@ public class MenuAdministrador extends HttpServlet {
 			usuario.setNombre(nombreCajero);
 			usuario.setUsuario(nombreUsuario);
 			usuario.setClaveSupervisor(clave1);
+			//Nada/**
+			/*
+			 * 
+			 * Aqui ahy algo 
+			 */
 			usuario.setRol("supervisor");
 			usuario.setPassword(password1);
 			new UsuarioDAO().persist(usuario);
