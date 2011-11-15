@@ -29,7 +29,7 @@ $(document).ready(function () {
 });
 </script>				
 </head>
-<body class="resto">
+<body class="resto" background="resources/images/azul.jpg">
 <div id="header">
 	Inicio de sesión del sistema
 	

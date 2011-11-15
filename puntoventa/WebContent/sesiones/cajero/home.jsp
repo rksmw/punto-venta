@@ -49,7 +49,7 @@ $(document).ready(function(){
 });  
 </script>
 </head>
-<body>
+<body background="resources/images/azul.jpg">
     <ul class="topnav">  
         <li><a href="#" onclick="javascript:abrir_punto_venta();">punto de venta</a></li>
         
