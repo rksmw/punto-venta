@@ -1,5 +1,7 @@
 package puntoventa.modelo.dao;
 
+import java.util.ArrayList;
+
 import puntoventa.modelo.Usuario;
 
 public class UsuarioDAO extends GenericDAOImpl<Usuario, Long> {
@@ -30,6 +32,19 @@ public class UsuarioDAO extends GenericDAOImpl<Usuario, Long> {
 			
 		}
 		return u;
+	}
+	@SuppressWarnings("unchecked")
+	public ArrayList<Usuario>listaUsuarios(){
+		ArrayList<Usuario> usuarios=null;
+		try{
+			usuarios=(ArrayList<Usuario>)getEntityManager().createQuery("" +
+					"FROM Usuario" +
+					" WHERE rol='cajero' or rol='supervisor' "  +
+					"").getResultList();
+		}catch (Exception e) {
+e.printStackTrace();
+		}
+		return usuarios;
 	}
 	
 

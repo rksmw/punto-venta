@@ -290,3 +290,29 @@ function actualizar_mis_datos(){
 		}
 	});
 }
+function abrir_borrar_usuarios(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?abrir_eliminar_usuarios",
+		data: "param=1",
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}
+function eliminar_este_usuario(){
+	$.ajax({
+		type : "POST",
+		url : "menuAdministrador?eliminar_este_usuario",
+		data:  $('form').serialize(),
+		success : function(data) {
+			$("#contenedor-principal").html(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(XMLHttpRequest.status + " ERROR!");
+		}
+	});
+}

@@ -537,7 +537,7 @@ public class MenuAdministrador extends HttpServlet {
 			usuario.setNombre(nombreCajero);
 			usuario.setUsuario(nombreUsuario);
 			usuario.setClaveSupervisor(clave1);
-			usuario.setRol("suervisor");
+			usuario.setRol("supervisor");
 			usuario.setPassword(password1);
 			new UsuarioDAO().persist(usuario);
 			String mensaje="Se ha guardado el Supervisor con nombre "+nombreCajero;
@@ -609,6 +609,32 @@ public class MenuAdministrador extends HttpServlet {
 		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/agregar_supervisor.jsp");
 		requestDispatcher.forward(request, response);		
 	}
+	
+	protected void doAbrirBorrarUsuarios(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		ArrayList<Usuario> usuarios=new UsuarioDAO().listaUsuarios();
+		request.setAttribute("usuarios", usuarios);
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/eliminar_usuarios.jsp");
+		requestDispatcher.forward(request, response);
+		
+	}
+	
+	protected void doEliminarEsteUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String usuarioRequest=request.getParameter("usuarioeliminar");
+		String mensaje="";
+		if(usuarioRequest.isEmpty()){
+			mensaje="Debe seleccionar un usuario para eliminar";
+		}else{
+			Long usuarioId=new Long(usuarioRequest);
+			Usuario u=new UsuarioDAO().findById(usuarioId);
+			new UsuarioDAO().remove(u);
+			mensaje="El usuario "+u.getNombre()+" se ha eliminado!";			
+		}
+		request.setAttribute("mensaje", mensaje);
+		ArrayList<Usuario> usuarios=new UsuarioDAO().listaUsuarios();
+		request.setAttribute("usuarios", usuarios);
+		RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/sesiones/administrador/eliminar_usuarios.jsp");
+		requestDispatcher.forward(request, response);
+	}
 	/*
 	 * 
 	 */
@@ -675,6 +701,14 @@ public class MenuAdministrador extends HttpServlet {
 		if(request.getQueryString().compareTo("actualizar_mis_datos")==0){
 			doActualizarMisDatos(request, response);
 		}
+		if(request.getQueryString().compareTo("abrir_eliminar_usuarios")==0){
+			doAbrirBorrarUsuarios(request, response);
+		}
+		if(request.getQueryString().compareTo("eliminar_este_usuario")==0){
+			doEliminarEsteUsuario(request, response);
+		}
+		
 	}
+	
 
 }

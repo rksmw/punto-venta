@@ -64,6 +64,8 @@ $(document).ready(function(){
         	<ul class="subnav">
         		<li><a href="#" onclick="javascript:abrir_crear_cajero();">Agregar cajero</a></li>
         		<li><a href="#" onclick="javascript:abrir_crear_supervisor();">Agregar supervisor</a></li>
+        		<li><a href="#" onclick="javascript:abrir_borrar_usuarios();">Eliminar usuarios</a></li>
+        		
         	</ul>
         </li>
         
