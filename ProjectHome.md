@@ -1,0 +1,1 @@
+El proyecto es un punto de venta para proposito escolar
